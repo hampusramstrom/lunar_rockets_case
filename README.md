@@ -10,8 +10,13 @@ Can be found in the [CHALLENGE.md](CHALLENGE.md).
 ## The Code Language
 I followed the instructions and picked a language that I feel comfortable in, where in this case I went for Java as I'm used to work with the [Guice](https://github.com/google/guice) dependency injection framework.
 
+## Prerequisites
+- Java 21 installed (developed with 21.0.6, can most probably use earlier versions).
+- Gradle 8 installed (developed with 8.13, probably works with earlier version).
+- An IDE supporting Java.
+
 ## Running The Solution
-Run the code in your IDE of choice (main class can be found in [App.java](app/src/main/java/org/rockets/App.java)).
+Compile and run the code in your IDE of choice (main class can be found in [App.java](app/src/main/java/org/rockets/App.java)).
 
 Run the `rockets` executable as (note `http`):
 ```bash
@@ -34,7 +39,7 @@ Run the `rockets` executable as (note `http`):
 ## Improvements
 - When looking at the output when running the `rockets` executable, it _seems_ like my assumption regarding the message number sequence doesn't hold. In that case, my solution would need to be redesigned depending on what can be expected.
 - Having a functionality to ingest all messages in the repository on bootup and set the state. Not relevant in my case when relying on an in-memory repository that disappears when shutting the application down (compared to having a database repository).
-- If efficiency of ingesting all the messages becomes a problem, a more powerful setup could be considered. An example of this would be to a solution more leaning towards a solution with an event-driven architecture. with a broker between the producer (the `rockets` executable) and the `consumers` (in our case my solution). Then we could increase the number of message consumers to ramp up the ingestion and scale horizontally.
+- If efficiency of ingesting all the messages becomes a problem, a more powerful setup could be considered. An example of this would be to a solution more leaning towards a solution with an event-driven architecture. With a broker between the producer (the `rockets` executable) and the `consumers` (in our case my solution). Then we could increase the number of message consumers to ramp up the ingestion and scale horizontally.
 - I have tried to add some different types of tests, but haven't covered everything that could be relevant due to time constraints.
 - I added very little Javadoc, also due to time constraints. If I would add it, then it would most probably be to the different interface methods.
 - There are some TODOs still in the code.

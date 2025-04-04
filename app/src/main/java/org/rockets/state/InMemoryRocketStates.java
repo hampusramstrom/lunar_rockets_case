@@ -8,15 +8,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.rockets.model.RocketState;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.inject.Singleton;
 
 // TODO: Extend class with a HashMap.
 @Singleton
 public class InMemoryRocketStates implements IRocketStates {
-    private static final Logger LOGGER = LoggerFactory.getLogger(InMemoryRocketStates.class);
 
     private final Map<UUID, RocketState> state;
 
@@ -87,12 +84,6 @@ public class InMemoryRocketStates implements IRocketStates {
     }
 
     private void updateLastMsgNbr(UUID channel, int newMsgNbr) {
-        int lastMsgNbr = state.get(channel).getLastMessageNumber();
-        if (lastMsgNbr > newMsgNbr) {
-            LOGGER.warn(String.format("%s - Wrong message order: Received a previous message. Last message number: %s, New message number %s", channel, lastMsgNbr, newMsgNbr));
-        } else if (lastMsgNbr + 1 < newMsgNbr) {
-            LOGGER.warn(String.format("%s - Wrong message order: Received a future message. Last message number: %s, New message number %s", channel, lastMsgNbr, newMsgNbr));
-        }
         state.get(channel).setLastMessageNumber(newMsgNbr);
     }
 }
